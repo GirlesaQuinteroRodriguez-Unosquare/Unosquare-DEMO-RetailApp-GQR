@@ -19,6 +19,11 @@ test.describe('Validaciones de Checkout', () => {
     await cart.proceedToCheckout();
   });
 
+  // @Priority:1
+  // @Severity:4
+  // @US:21
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('Zip code inválido', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
@@ -38,6 +43,11 @@ test.describe('Validaciones de Checkout', () => {
     await expect(checkout.errorBanner).toHaveText(/zip code/);
   });
 
+  // @Priority:2
+  // @Severity:4
+  // @US:22
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('Card number inválido', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
@@ -57,6 +67,11 @@ test.describe('Validaciones de Checkout', () => {
     await expect(checkout.errorBanner).toHaveText(/16-digit card number/);
   });
 
+  // @Priority:3
+  // @Severity:3
+  // @US:23
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('Expiry date inválida', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
@@ -76,6 +91,11 @@ test.describe('Validaciones de Checkout', () => {
     await expect(checkout.errorBanner).toHaveText(/expiry date/);
   });
 
+  // @Priority:3
+  // @Severity:3
+  // @US:24
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('CVV inválido', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({

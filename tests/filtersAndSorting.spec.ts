@@ -11,6 +11,11 @@ test.describe('Filtros y ordenamientos de productos', () => {
     await login.login('unosquare_validUser', 'secret_uno');
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:31
+  // @SP:1
+  // @PageObject:InventoryPage
   test('Filtrar por categoría inexistente muestra lista vacía', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.categoryFilter.selectOption('nonexistent');
@@ -19,6 +24,11 @@ test.describe('Filtros y ordenamientos de productos', () => {
     await expect(inventory.inventoryContainer).not.toContainText('Pickleball');
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:32
+  // @SP:1
+  // @PageObject:InventoryPage
   test('Filtrar por precio menor al más barato muestra lista vacía', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.priceFilter.fill('1');
@@ -27,6 +37,11 @@ test.describe('Filtros y ordenamientos de productos', () => {
     await expect(inventory.inventoryContainer).not.toContainText('Pickleball');
   });
 
+  // @Priority:4
+  // @Severity:1
+  // @US:33
+  // @SP:1
+  // @PageObject:InventoryPage
   test('Ordenar por precio ascendente', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.sortSelect.selectOption('price-asc');
@@ -35,6 +50,11 @@ test.describe('Filtros y ordenamientos de productos', () => {
     expect(firstProduct).toContain('Tennis Ball Set'); // El más barato
   });
 
+  // @Priority:4
+  // @Severity:1
+  // @US:34
+  // @SP:1
+  // @PageObject:InventoryPage
   test('Ordenar por nombre descendente', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.sortSelect.selectOption('name-desc');

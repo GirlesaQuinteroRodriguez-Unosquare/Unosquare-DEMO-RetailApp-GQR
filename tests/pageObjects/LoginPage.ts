@@ -12,12 +12,12 @@ export class LoginPage {
     this.page = page;
     this.usernameInput = page.locator('#username');
     this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('button[type="submit"]');
+    this.loginButton = page.locator('#login-form button[type="submit"]');
     this.guestButton = page.locator('#guest-checkout-btn');
     this.errorBanner = page.locator('.error-message');
   }
 
-  async goto(baseUrl: string = 'http://localhost:8080') {
+  async goto(baseUrl: string = 'http://localhost:5500') {
     await this.page.goto(baseUrl);
   }
 

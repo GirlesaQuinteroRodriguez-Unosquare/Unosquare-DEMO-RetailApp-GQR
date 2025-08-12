@@ -13,6 +13,11 @@ test.describe('Carrito de compras - Casos de borde y negativos', () => {
     await login.login('unosquare_validUser', 'secret_uno');
   });
 
+  // @Priority:2
+  // @Severity:3
+  // @US:12
+  // @SP:2
+  // @PageObject:CartPage
   test('No permite checkout con carrito vacío', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.openCart();
@@ -20,6 +25,11 @@ test.describe('Carrito de compras - Casos de borde y negativos', () => {
     await expect(cart.checkoutButton).toBeDisabled();
   });
 
+  // @Priority:2
+  // @Severity:3
+  // @US:13
+  // @SP:2
+  // @PageObject:CartPage
   test('No permite checkout con total negativo', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.addProductToCartByName('Defective Pickleball Set (CLEARANCE)');
@@ -28,6 +38,11 @@ test.describe('Carrito de compras - Casos de borde y negativos', () => {
     await expect(cart.checkoutButton).toBeDisabled();
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:14
+  // @SP:3
+  // @PageObject:CartPage
   test('Agregar y eliminar productos, cantidad mínima y máxima', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.addProductToCartByName('Tennis Ball Set (3 pack)');
@@ -39,6 +54,11 @@ test.describe('Carrito de compras - Casos de borde y negativos', () => {
     await expect(cart.cartItems).toContainText('Tennis Ball Set');
   });
 
+  // @Priority:4
+  // @Severity:2
+  // @US:15
+  // @SP:2
+  // @PageObject:CartPage
   test('Persistencia del carrito tras recargar la página', async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.addProductToCartByName('Paddle Ball Set');
@@ -46,6 +66,7 @@ test.describe('Carrito de compras - Casos de borde y negativos', () => {
     const cart = new CartPage(page);
     await expect(cart.cartItems).toContainText('Paddle Ball Set');
     await page.reload();
+    await inventory.openCart();
     await expect(cart.cartItems).toContainText('Paddle Ball Set');
   });
 });

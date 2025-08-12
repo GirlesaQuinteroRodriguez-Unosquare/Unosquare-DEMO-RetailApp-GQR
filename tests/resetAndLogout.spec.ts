@@ -6,6 +6,11 @@ import { CartPage } from './pageObjects/CartPage';
 // Casos de prueba para reset y logout
 
 test.describe('Reset App y Logout', () => {
+  // @Priority:2
+  // @Severity:3
+  // @US:51
+  // @SP:2
+  // @PageObject:CartPage
   test('Reset App limpia el carrito y regresa a inventario', async ({ page }) => {
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
@@ -24,6 +29,11 @@ test.describe('Reset App y Logout', () => {
     await expect(cart.cartItems).not.toContainText('Tennis Ball Set');
   });
 
+  // @Priority:2
+  // @Severity:3
+  // @US:52
+  // @SP:2
+  // @PageObject:CartPage
   test('Logout limpia usuario y carrito', async ({ page }) => {
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');

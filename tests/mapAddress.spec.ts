@@ -18,11 +18,21 @@ test.describe('Selección de dirección en el mapa', () => {
     await cart.proceedToCheckout();
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:61
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('No selecciona coordenadas si no se hace click en el mapa', async ({ page }) => {
     // No interactúa con el mapa
     await expect(page.locator('#selected-coordinates')).toBeHidden();
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:62
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('Selecciona coordenadas al hacer click en el mapa', async ({ page }) => {
     // Espera a que el mapa esté visible
     await expect(page.locator('#address-map')).toBeVisible();

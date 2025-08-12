@@ -18,6 +18,11 @@ test.describe('Guest Checkout', () => {
     await cart.proceedToCheckout();
   });
 
+  // @Priority:2
+  // @Severity:3
+  // @US:41
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('No permite continuar con email inválido', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
@@ -38,6 +43,11 @@ test.describe('Guest Checkout', () => {
     await expect(checkout.errorBanner).toHaveText(/email/);
   });
 
+  // @Priority:3
+  // @Severity:2
+  // @US:42
+  // @SP:2
+  // @PageObject:CheckoutPage
   test('Permite continuar con email válido', async ({ page }) => {
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
