@@ -1,50 +1,66 @@
+// Define el tipo para los tests
+interface PlaywrightTestResult {
+  title: string;
+  outcome: string;
+  duration: number;
+  startTime: string | number | Date;
+  endTime: string | number | Date;
+  file: string;
+}
+
 const fs = require('fs');
 const path = require('path');
-const sql = require('mssql');
+const mysql = require('mysql2/promise');
 
 const config = {
-  server: 'localhost',
+  host: 'localhost',
+  user: 'retailapp_user',
+  password: 'unosquare123456789',
   database: 'QA_Automation',
-  options: { trustServerCertificate: true },
-  authentication: {
-    type: 'ntlm',
-    options: {
-      domain: '',
-      userName: process.env.USERNAME || '',
-      password: ''
-    }
-  }
+  port: 3306
 };
 
 // Ruta por defecto del JSON de Playwright
 const resultsPath = path.join(__dirname, 'test-results.json');
 
-async function insertResult(test: any, pool: any) {
-  const { title, outcome, duration, startTime, endTime, file } = test;
-  // Puedes adaptar estos campos según tu estructura
-  const ScriptName = title;
-  const Category = '';
-  const TestSuite = file || '';
-  const ExecutionTime = duration / 1000; // ms a segundos
-  const StartTime = startTime ? new Date(startTime) : new Date();
-  const EndTime = endTime ? new Date(endTime) : new Date();
-  const Status = outcome === 'expected' ? 'Passed' : 'Failed';
-  const ExecutionTarget = '';
 
-  await pool.request()
-    .input('ScriptName', sql.NVarChar, ScriptName)
-    .input('Category', sql.NVarChar, Category)
-    .input('TestSuite', sql.NVarChar, TestSuite)
-    .input('ExecutionTime', sql.Float, ExecutionTime)
-    .input('StartTime', sql.DateTime, StartTime)
-    .input('EndTime', sql.DateTime, EndTime)
-    .input('Status', sql.NVarChar, Status)
-    .input('ExecutionTarget', sql.NVarChar, ExecutionTarget)
-    .query(`INSERT INTO ScriptDetails 
-      (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)
-      VALUES (@ScriptName, @Category, @TestSuite, @ExecutionTime, @StartTime, @EndTime, @Status, @ExecutionTarget)`);
+async function insertResult(test: PlaywrightTestResult, connection: any) {
+  const suiteTitle = (test as any)._suiteTitle || '';
+  const pageObject = (test as any)._pageObject || '';
+
+  const ScriptName = test.title;
+  const Category = suiteTitle;
+  const TestSuite = pageObject;
+  const ExecutionTime = test.duration ? test.duration / 1000 : null;
+  const StartTime = test.startTime ? new Date(test.startTime) : new Date();
+  const EndTime = test.endTime ? new Date(test.endTime) : new Date();
+  const Status = test.outcome ? capitalizeStatus(test.outcome) : '';
+  const ExecutionTarget = test.file || '';
+
+  // Log para depuración
+  console.log({ ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget });
+
+  const sqlInsert = `INSERT INTO ScriptDetails 
+    (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+  await connection.execute(sqlInsert, [
+    ScriptName,
+    Category,
+    TestSuite,
+    ExecutionTime,
+    StartTime,
+    EndTime,
+    Status,
+    ExecutionTarget
+  ]);
 }
 
+function capitalizeStatus(status) {
+  if (!status) return '';
+  if (status === 'expected') return 'Passed';
+  if (status === 'unexpected') return 'Failed';
+  return status.charAt(0).toUpperCase() + status.slice(1);
+}
 
 async function main() {
   if (!fs.existsSync(resultsPath)) {
@@ -53,33 +69,54 @@ async function main() {
   }
   const data = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
   // Playwright JSON reporter: data.suites[].specs[].tests[]
-  const tests: any[] = [];
-  if (data.suites) {
-    for (const suite of data.suites) {
+  const tests: PlaywrightTestResult[] = [];
+  function collectSpecs(suite, parentTitle = '') {
+    if (suite.specs) {
       for (const spec of suite.specs) {
+        let pageObject = '';
+        if (spec.file) {
+          const match = spec.file.match(/pageObjects[\\\/]([\w-]+)\./i);
+          if (match) pageObject = match[1];
+        }
         for (const test of spec.tests) {
-          tests.push({
-            title: spec.title,
+          const t: PlaywrightTestResult = {
+            title: test.title || '',
             outcome: test.results[0]?.status,
             duration: test.results[0]?.duration,
             startTime: test.results[0]?.startTime,
             endTime: test.results[0]?.endTime,
             file: spec.file
-          });
+          };
+          (t as any)._suiteTitle = parentTitle;
+          (t as any)._pageObject = pageObject;
+          tests.push(t);
         }
       }
     }
+    if (suite.suites) {
+      for (const child of suite.suites) {
+        collectSpecs(child, child.title || parentTitle);
+      }
+    }
   }
-  let pool: any;
+  if (data.suites) {
+    for (const suite of data.suites) {
+      collectSpecs(suite, suite.title || '');
+    }
+  }
+  console.log('Cantidad de tests encontrados:', tests.length);
+  let connection;
   try {
-    pool = await sql.connect(config);
+    connection = await mysql.createConnection(config);
     for (const test of tests) {
-      await insertResult(test, pool);
+      await insertResult(test, connection);
       console.log(`Insertado: ${test.title} (${test.outcome})`);
     }
+  } catch (err) {
+    console.error('Error:', err);
   } finally {
-    if (pool) await pool.close();
+    if (connection) await connection.end();
   }
 }
 
-main().catch(err => { console.error('Error:', err); });
+main();

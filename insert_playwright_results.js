@@ -36,47 +36,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var fs = require('fs');
 var path = require('path');
-var sql = require('mssql');
+var mysql = require('mysql2/promise');
 var config = {
-    server: 'localhost',
+    host: 'localhost',
+    user: 'retailapp_user',
+    password: 'unosquare123456789',
     database: 'QA_Automation',
-    options: { trustServerCertificate: true },
-    authentication: {
-        type: 'ntlm',
-        options: {
-            domain: '',
-            userName: process.env.USERNAME || '',
-            password: ''
-        }
-    }
+    port: 3306
 };
 // Ruta por defecto del JSON de Playwright
 var resultsPath = path.join(__dirname, 'test-results.json');
-function insertResult(test, pool) {
+function insertResult(test, connection) {
     return __awaiter(this, void 0, void 0, function () {
-        var title, outcome, duration, startTime, endTime, file, ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget;
+        var suiteTitle, pageObject, ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget, sqlInsert;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    title = test.title, outcome = test.outcome, duration = test.duration, startTime = test.startTime, endTime = test.endTime, file = test.file;
-                    ScriptName = title;
-                    Category = '';
-                    TestSuite = file || '';
-                    ExecutionTime = duration / 1000;
-                    StartTime = startTime ? new Date(startTime) : new Date();
-                    EndTime = endTime ? new Date(endTime) : new Date();
-                    Status = outcome === 'expected' ? 'Passed' : 'Failed';
-                    ExecutionTarget = '';
-                    return [4 /*yield*/, pool.request()
-                            .input('ScriptName', sql.NVarChar, ScriptName)
-                            .input('Category', sql.NVarChar, Category)
-                            .input('TestSuite', sql.NVarChar, TestSuite)
-                            .input('ExecutionTime', sql.Float, ExecutionTime)
-                            .input('StartTime', sql.DateTime, StartTime)
-                            .input('EndTime', sql.DateTime, EndTime)
-                            .input('Status', sql.NVarChar, Status)
-                            .input('ExecutionTarget', sql.NVarChar, ExecutionTarget)
-                            .query("INSERT INTO ScriptDetails \n      (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)\n      VALUES (@ScriptName, @Category, @TestSuite, @ExecutionTime, @StartTime, @EndTime, @Status, @ExecutionTarget)")];
+                    suiteTitle = test._suiteTitle || '';
+                    pageObject = test._pageObject || '';
+                    ScriptName = test.title;
+                    Category = suiteTitle;
+                    TestSuite = pageObject;
+                    ExecutionTime = test.duration ? test.duration / 1000 : null;
+                    StartTime = test.startTime ? new Date(test.startTime) : new Date();
+                    EndTime = test.endTime ? new Date(test.endTime) : new Date();
+                    Status = test.outcome ? capitalizeStatus(test.outcome) : '';
+                    ExecutionTarget = test.file || '';
+                    // Log para depuración
+                    console.log({ ScriptName: ScriptName, Category: Category, TestSuite: TestSuite, ExecutionTime: ExecutionTime, StartTime: StartTime, EndTime: EndTime, Status: Status, ExecutionTarget: ExecutionTarget });
+                    sqlInsert = "INSERT INTO ScriptDetails \n    (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    return [4 /*yield*/, connection.execute(sqlInsert, [
+                            ScriptName,
+                            Category,
+                            TestSuite,
+                            ExecutionTime,
+                            StartTime,
+                            EndTime,
+                            Status,
+                            ExecutionTarget
+                        ])];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -84,12 +82,55 @@ function insertResult(test, pool) {
         });
     });
 }
+function capitalizeStatus(status) {
+    if (!status)
+        return '';
+    if (status === 'expected')
+        return 'Passed';
+    if (status === 'unexpected')
+        return 'Failed';
+    return status.charAt(0).toUpperCase() + status.slice(1);
+}
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, tests, _i, _a, suite, _b, _c, spec, _d, _e, test, pool, _f, tests_1, test;
-        var _g, _h, _j, _k;
-        return __generator(this, function (_l) {
-            switch (_l.label) {
+        function collectSpecs(suite, parentTitle) {
+            var _a, _b, _c, _d;
+            if (parentTitle === void 0) { parentTitle = ''; }
+            if (suite.specs) {
+                for (var _i = 0, _e = suite.specs; _i < _e.length; _i++) {
+                    var spec = _e[_i];
+                    var pageObject = '';
+                    if (spec.file) {
+                        var match = spec.file.match(/pageObjects[\\\/]([\w-]+)\./i);
+                        if (match)
+                            pageObject = match[1];
+                    }
+                    for (var _f = 0, _g = spec.tests; _f < _g.length; _f++) {
+                        var test = _g[_f];
+                        var t = {
+                            title: test.title || '',
+                            outcome: (_a = test.results[0]) === null || _a === void 0 ? void 0 : _a.status,
+                            duration: (_b = test.results[0]) === null || _b === void 0 ? void 0 : _b.duration,
+                            startTime: (_c = test.results[0]) === null || _c === void 0 ? void 0 : _c.startTime,
+                            endTime: (_d = test.results[0]) === null || _d === void 0 ? void 0 : _d.endTime,
+                            file: spec.file
+                        };
+                        t._suiteTitle = parentTitle;
+                        t._pageObject = pageObject;
+                        tests.push(t);
+                    }
+                }
+            }
+            if (suite.suites) {
+                for (var _h = 0, _j = suite.suites; _h < _j.length; _h++) {
+                    var child = _j[_h];
+                    collectSpecs(child, child.title || parentTitle);
+                }
+            }
+        }
+        var data, tests, _i, _a, suite, connection, _b, tests_1, test, err_1;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
                     if (!fs.existsSync(resultsPath)) {
                         console.error('No se encontró el archivo de resultados:', resultsPath);
@@ -100,52 +141,44 @@ function main() {
                     if (data.suites) {
                         for (_i = 0, _a = data.suites; _i < _a.length; _i++) {
                             suite = _a[_i];
-                            for (_b = 0, _c = suite.specs; _b < _c.length; _b++) {
-                                spec = _c[_b];
-                                for (_d = 0, _e = spec.tests; _d < _e.length; _d++) {
-                                    test = _e[_d];
-                                    tests.push({
-                                        title: spec.title,
-                                        outcome: (_g = test.results[0]) === null || _g === void 0 ? void 0 : _g.status,
-                                        duration: (_h = test.results[0]) === null || _h === void 0 ? void 0 : _h.duration,
-                                        startTime: (_j = test.results[0]) === null || _j === void 0 ? void 0 : _j.startTime,
-                                        endTime: (_k = test.results[0]) === null || _k === void 0 ? void 0 : _k.endTime,
-                                        file: spec.file
-                                    });
-                                }
-                            }
+                            collectSpecs(suite, suite.title || '');
                         }
                     }
-                    _l.label = 1;
+                    console.log('Cantidad de tests encontrados:', tests.length);
+                    _c.label = 1;
                 case 1:
-                    _l.trys.push([1, , 7, 10]);
-                    return [4 /*yield*/, sql.connect(config)];
+                    _c.trys.push([1, 7, 8, 11]);
+                    return [4 /*yield*/, mysql.createConnection(config)];
                 case 2:
-                    pool = _l.sent();
-                    _f = 0, tests_1 = tests;
-                    _l.label = 3;
+                    connection = _c.sent();
+                    _b = 0, tests_1 = tests;
+                    _c.label = 3;
                 case 3:
-                    if (!(_f < tests_1.length)) return [3 /*break*/, 6];
-                    test = tests_1[_f];
-                    return [4 /*yield*/, insertResult(test, pool)];
+                    if (!(_b < tests_1.length)) return [3 /*break*/, 6];
+                    test = tests_1[_b];
+                    return [4 /*yield*/, insertResult(test, connection)];
                 case 4:
-                    _l.sent();
+                    _c.sent();
                     console.log("Insertado: ".concat(test.title, " (").concat(test.outcome, ")"));
-                    _l.label = 5;
+                    _c.label = 5;
                 case 5:
-                    _f++;
+                    _b++;
                     return [3 /*break*/, 3];
-                case 6: return [3 /*break*/, 10];
+                case 6: return [3 /*break*/, 11];
                 case 7:
-                    if (!pool) return [3 /*break*/, 9];
-                    return [4 /*yield*/, pool.close()];
+                    err_1 = _c.sent();
+                    console.error('Error:', err_1);
+                    return [3 /*break*/, 11];
                 case 8:
-                    _l.sent();
-                    _l.label = 9;
-                case 9: return [7 /*endfinally*/];
-                case 10: return [2 /*return*/];
+                    if (!connection) return [3 /*break*/, 10];
+                    return [4 /*yield*/, connection.end()];
+                case 9:
+                    _c.sent();
+                    _c.label = 10;
+                case 10: return [7 /*endfinally*/];
+                case 11: return [2 /*return*/];
             }
         });
     });
 }
-main().catch(function (err) { console.error('Error:', err); });
+main();

@@ -59,3 +59,31 @@ Puedes agregar más casos siguiendo el patrón de Page Object Model y Playwright
 ---
 
 **Autor:** GitHub Copilot — Agosto 2025
+
+Instalar npm install mssql
+Presiona Windows + R para abrir “Ejecutar”.
+
+Escribe (según tu versión de SQL Server):
+
+Para SQL Server 2022:
+
+SQLServerManager16.msc
+
+1. En el panel izquierdo, selecciona:
+SQL Server Network Configuration > Protocols for MSSQLSERVER (o el nombre de tu instancia).
+2. En el panel derecho:
+Haz doble clic en TCP/IP.
+Cambia el valor a Enabled si no lo está.
+ Haz doble clic en TCP/IP y ve a la pestaña IP Addresses:
+Baja hasta la sección IPAll.
+En TCP Port, asegúrate de que diga:
+(Si está vacío, escríbelo).
+4. Haz clic en OK.
+5. Reinicia el servicio de SQL Server:
+En el panel izquierdo, haz clic en SQL Server Services.
+En el panel derecho, haz clic derecho en SQL Server (MSSQLSERVER) y selecciona Restart.
+
+npm install --save-dev typescript
+npx tsc insert_script_result.ts
+
+npx playwright test --reporter=json
