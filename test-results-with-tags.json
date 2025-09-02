@@ -1,184 +1,994 @@
 {
   "tests": [
     {
+      "title": "Persistencia del carrito tras recargar la página",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:55.897Z",
+      "endTime": 1756774555902,
+      "tags": {
+        "US": "15",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "CART-PERSIST"
+      },
+      "runName": "Retest 2"
+    },
+    {
       "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:55.900Z",
+      "endTime": 1756774555905,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
       "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
       "outcome": "failed",
       "duration": 7,
-      "startTime": "2025-09-02T00:46:36.812Z",
-      "endTime": 1756773996819,
-      "tags": {
-        "US": "13",
-        "SP": "2",
-        "Severity": "3",
-        "testcase": "CART-NEGATIVE"
-      },
-      "runName": "QA_Sprint_Sept_2025"
-    },
-    {
-      "title": "No permite checkout con carrito vacío",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
-      "outcome": "failed",
-      "duration": 5,
-      "startTime": "2025-09-02T00:46:36.837Z",
-      "endTime": 1756773996842,
+      "startTime": "2025-09-02T00:55:55.897Z",
+      "endTime": 1756774555904,
       "tags": {
         "US": "12",
         "SP": "2",
         "Severity": "3",
         "testcase": "CART-EMPTY"
       },
-      "runName": "QA_Sprint_Sept_2025"
-    },
-    {
-      "title": "Persistencia del carrito tras recargar la página",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
-      "outcome": "failed",
-      "duration": 6,
-      "startTime": "2025-09-02T00:46:36.847Z",
-      "endTime": 1756773996853,
-      "tags": {
-        "US": "15",
-        "SP": "2",
-        "Severity": "2",
-        "testcase": "CART-PERSIST"
-      },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
     },
     {
       "title": "Agregar y eliminar productos, cantidad mínima y máxima",
       "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
       "outcome": "failed",
-      "duration": 5,
-      "startTime": "2025-09-02T00:46:36.862Z",
-      "endTime": 1756773996867,
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:55.894Z",
+      "endTime": 1756774555900,
       "tags": {
         "US": "14",
         "SP": "3",
         "Severity": "2",
         "testcase": "CART-ADD-REMOVE"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
     },
     {
-      "title": "No permite checkout con total negativo",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
-      "outcome": "failed",
-      "duration": 6,
-      "startTime": "2025-09-02T00:46:36.863Z",
-      "endTime": 1756773996869,
-      "tags": {
-        "US": "13",
-        "SP": "2",
-        "Severity": "3",
-        "testcase": "CART-NEGATIVE"
-      },
-      "runName": "QA_Sprint_Sept_2025"
-    },
-    {
-      "title": "Persistencia del carrito tras recargar la página",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "title": "CVV inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
       "outcome": "failed",
       "duration": 5,
-      "startTime": "2025-09-02T00:46:36.870Z",
-      "endTime": 1756773996875,
+      "startTime": "2025-09-02T00:55:55.908Z",
+      "endTime": 1756774555913,
       "tags": {
-        "US": "15",
+        "US": "24",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-CVV"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por precio menor al más barato muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:55.925Z",
+      "endTime": 1756774555931,
+      "tags": {
+        "US": "32",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-PRICE-LOW"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Expiry date inválida",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:55.938Z",
+      "endTime": 1756774555943,
+      "tags": {
+        "US": "23",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-EXP"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Card number inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:55.935Z",
+      "endTime": 1756774555941,
+      "tags": {
+        "US": "22",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-CARD"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por categoría inexistente muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:55.946Z",
+      "endTime": 1756774555951,
+      "tags": {
+        "US": "31",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-NONE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Ordenar por precio ascendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:55.941Z",
+      "endTime": 1756774555947,
+      "tags": {
+        "US": "33",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-PRICE-ASC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Zip code inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:55.951Z",
+      "endTime": 1756774555957,
+      "tags": {
+        "US": "21",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-ZIP"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Permite continuar con email válido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:56.892Z",
+      "endTime": 1756774556897,
+      "tags": {
+        "US": "42",
         "SP": "2",
         "Severity": "2",
-        "testcase": "CART-PERSIST"
+        "testcase": "GUEST-EMAIL-VALID"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
     },
     {
-      "title": "No permite checkout con carrito vacío",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "title": "Ordenar por nombre descendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
       "outcome": "failed",
       "duration": 6,
-      "startTime": "2025-09-02T00:46:36.871Z",
-      "endTime": 1756773996877,
+      "startTime": "2025-09-02T00:55:56.902Z",
+      "endTime": 1756774556908,
       "tags": {
-        "US": "12",
-        "SP": "2",
-        "Severity": "3",
-        "testcase": "CART-EMPTY"
+        "US": "34",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-NAME-DESC"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
     },
     {
-      "title": "No permite checkout con total negativo",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
-      "outcome": "failed",
-      "duration": 6,
-      "startTime": "2025-09-02T00:46:36.881Z",
-      "endTime": 1756773996887,
-      "tags": {
-        "US": "13",
-        "SP": "2",
-        "Severity": "3",
-        "testcase": "CART-NEGATIVE"
-      },
-      "runName": "QA_Sprint_Sept_2025"
-    },
-    {
-      "title": "No permite checkout con carrito vacío",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
-      "outcome": "failed",
-      "duration": 5,
-      "startTime": "2025-09-02T00:46:36.882Z",
-      "endTime": 1756773996887,
-      "tags": {
-        "US": "12",
-        "SP": "2",
-        "Severity": "3",
-        "testcase": "CART-EMPTY"
-      },
-      "runName": "QA_Sprint_Sept_2025"
-    },
-    {
-      "title": "Agregar y eliminar productos, cantidad mínima y máxima",
-      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "title": "No permite continuar con email inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
       "outcome": "failed",
       "duration": 7,
-      "startTime": "2025-09-02T00:46:36.925Z",
-      "endTime": 1756773996932,
+      "startTime": "2025-09-02T00:55:56.926Z",
+      "endTime": 1756774556933,
       "tags": {
-        "US": "14",
-        "SP": "3",
-        "Severity": "2",
-        "testcase": "CART-ADD-REMOVE"
+        "US": "41",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "GUEST-EMAIL-INVALID"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario errorUser muestra error especial",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:56.940Z",
+      "endTime": 1756774556945,
+      "tags": {
+        "US": "3",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-EPIC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No selecciona coordenadas si no se hace click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:55:56.952Z",
+      "endTime": 1756774556956,
+      "tags": {
+        "US": "61",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-NO-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Campos vacíos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:56.958Z",
+      "endTime": 1756774556963,
+      "tags": {
+        "US": "2",
+        "SP": "1",
+        "Severity": "3",
+        "testcase": "LOGIN-EMPTY"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario y contraseña incorrectos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:56.960Z",
+      "endTime": 1756774556965,
+      "tags": {
+        "US": "1",
+        "SP": "1",
+        "Severity": "4",
+        "testcase": "LOGIN-FAIL"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Logout limpia usuario y carrito",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:56.987Z",
+      "endTime": 1756774556993,
+      "tags": {
+        "US": "52",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "LOGOUT-CART"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Selecciona coordenadas al hacer click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 9,
+      "startTime": "2025-09-02T00:55:56.992Z",
+      "endTime": 1756774557001,
+      "tags": {
+        "US": "62",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario performanceUser muestra loading",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:57.026Z",
+      "endTime": 1756774557032,
+      "tags": {
+        "US": "4",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-LOAD"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Reset App limpia el carrito y regresa a inventario",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:57.045Z",
+      "endTime": 1756774557051,
+      "tags": {
+        "US": "51",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "RESET-CART"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:55:57.927Z",
+      "endTime": 1756774557931,
+      "tags": {
+        "US": "12",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-EMPTY"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:57.936Z",
+      "endTime": 1756774557941,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Zip code inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:57.987Z",
+      "endTime": 1756774557992,
+      "tags": {
+        "US": "21",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-ZIP"
+      },
+      "runName": "Retest 2"
     },
     {
       "title": "Agregar y eliminar productos, cantidad mínima y máxima",
       "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
       "outcome": "failed",
       "duration": 6,
-      "startTime": "2025-09-02T00:46:36.917Z",
-      "endTime": 1756773996923,
+      "startTime": "2025-09-02T00:55:57.978Z",
+      "endTime": 1756774557984,
       "tags": {
         "US": "14",
         "SP": "3",
         "Severity": "2",
         "testcase": "CART-ADD-REMOVE"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
+    },
+    {
+      "title": "CVV inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:57.986Z",
+      "endTime": 1756774557991,
+      "tags": {
+        "US": "24",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-CVV"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Card number inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:57.990Z",
+      "endTime": 1756774557995,
+      "tags": {
+        "US": "22",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-CARD"
+      },
+      "runName": "Retest 2"
     },
     {
       "title": "Persistencia del carrito tras recargar la página",
       "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
       "outcome": "failed",
-      "duration": 2,
-      "startTime": "2025-09-02T00:46:37.508Z",
-      "endTime": 1756773997510,
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:57.993Z",
+      "endTime": 1756774557999,
       "tags": {
         "US": "15",
         "SP": "2",
         "Severity": "2",
         "testcase": "CART-PERSIST"
       },
-      "runName": "QA_Sprint_Sept_2025"
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Expiry date inválida",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 7,
+      "startTime": "2025-09-02T00:55:58.007Z",
+      "endTime": 1756774558014,
+      "tags": {
+        "US": "23",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-EXP"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por categoría inexistente muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:58.035Z",
+      "endTime": 1756774558040,
+      "tags": {
+        "US": "31",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-NONE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por precio menor al más barato muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:58.068Z",
+      "endTime": 1756774558073,
+      "tags": {
+        "US": "32",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-PRICE-LOW"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Ordenar por precio ascendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:58.098Z",
+      "endTime": 1756774558103,
+      "tags": {
+        "US": "33",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-PRICE-ASC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Ordenar por nombre descendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:58.910Z",
+      "endTime": 1756774558915,
+      "tags": {
+        "US": "34",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-NAME-DESC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite continuar con email inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:58.981Z",
+      "endTime": 1756774558987,
+      "tags": {
+        "US": "41",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "GUEST-EMAIL-INVALID"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Permite continuar con email válido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
+      "outcome": "failed",
+      "duration": 11,
+      "startTime": "2025-09-02T00:55:59.008Z",
+      "endTime": 1756774559019,
+      "tags": {
+        "US": "42",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "GUEST-EMAIL-VALID"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario y contraseña incorrectos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:59.021Z",
+      "endTime": 1756774559026,
+      "tags": {
+        "US": "1",
+        "SP": "1",
+        "Severity": "4",
+        "testcase": "LOGIN-FAIL"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Selecciona coordenadas al hacer click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 7,
+      "startTime": "2025-09-02T00:55:59.012Z",
+      "endTime": 1756774559019,
+      "tags": {
+        "US": "62",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario performanceUser muestra loading",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:59.037Z",
+      "endTime": 1756774559043,
+      "tags": {
+        "US": "4",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-LOAD"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Campos vacíos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:59.037Z",
+      "endTime": 1756774559043,
+      "tags": {
+        "US": "2",
+        "SP": "1",
+        "Severity": "3",
+        "testcase": "LOGIN-EMPTY"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No selecciona coordenadas si no se hace click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 16,
+      "startTime": "2025-09-02T00:55:59.056Z",
+      "endTime": 1756774559072,
+      "tags": {
+        "US": "61",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-NO-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Reset App limpia el carrito y regresa a inventario",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 7,
+      "startTime": "2025-09-02T00:55:59.068Z",
+      "endTime": 1756774559075,
+      "tags": {
+        "US": "51",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "RESET-CART"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Logout limpia usuario y carrito",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:55:59.108Z",
+      "endTime": 1756774559113,
+      "tags": {
+        "US": "52",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "LOGOUT-CART"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario errorUser muestra error especial",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:55:59.106Z",
+      "endTime": 1756774559112,
+      "tags": {
+        "US": "3",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-EPIC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.003Z",
+      "endTime": 1756774560009,
+      "tags": {
+        "US": "12",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-EMPTY"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Persistencia del carrito tras recargar la página",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:00.085Z",
+      "endTime": 1756774560090,
+      "tags": {
+        "US": "15",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "CART-PERSIST"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Expiry date inválida",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.086Z",
+      "endTime": 1756774560092,
+      "tags": {
+        "US": "23",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-EXP"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:00.111Z",
+      "endTime": 1756774560116,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Agregar y eliminar productos, cantidad mínima y máxima",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.126Z",
+      "endTime": 1756774560132,
+      "tags": {
+        "US": "14",
+        "SP": "3",
+        "Severity": "2",
+        "testcase": "CART-ADD-REMOVE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "CVV inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.139Z",
+      "endTime": 1756774560145,
+      "tags": {
+        "US": "24",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CHK-CVV"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Card number inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:00.149Z",
+      "endTime": 1756774560154,
+      "tags": {
+        "US": "22",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-CARD"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por categoría inexistente muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.147Z",
+      "endTime": 1756774560153,
+      "tags": {
+        "US": "31",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-NONE"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Filtrar por precio menor al más barato muestra lista vacía",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.151Z",
+      "endTime": 1756774560157,
+      "tags": {
+        "US": "32",
+        "SP": "1",
+        "Severity": "2",
+        "testcase": "FILTER-PRICE-LOW"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Ordenar por precio ascendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 9,
+      "startTime": "2025-09-02T00:56:00.155Z",
+      "endTime": 1756774560164,
+      "tags": {
+        "US": "33",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-PRICE-ASC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Zip code inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\checkoutValidation.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:00.161Z",
+      "endTime": 1756774560167,
+      "tags": {
+        "US": "21",
+        "SP": "2",
+        "Severity": "4",
+        "testcase": "CHK-ZIP"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Ordenar por nombre descendente",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\filtersAndSorting.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.097Z",
+      "endTime": 1756774561101,
+      "tags": {
+        "US": "34",
+        "SP": "1",
+        "Severity": "1",
+        "testcase": "SORT-NAME-DESC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No selecciona coordenadas si no se hace click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:01.132Z",
+      "endTime": 1756774561137,
+      "tags": {
+        "US": "61",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-NO-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Permite continuar con email válido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:01.150Z",
+      "endTime": 1756774561155,
+      "tags": {
+        "US": "42",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "GUEST-EMAIL-VALID"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Selecciona coordenadas al hacer click en el mapa",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\mapAddress.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.157Z",
+      "endTime": 1756774561161,
+      "tags": {
+        "US": "62",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "MAP-CLICK"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "No permite continuar con email inválido",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\guestCheckout.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:56:01.159Z",
+      "endTime": 1756774561165,
+      "tags": {
+        "US": "41",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "GUEST-EMAIL-INVALID"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Reset App limpia el carrito y regresa a inventario",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.196Z",
+      "endTime": 1756774561200,
+      "tags": {
+        "US": "51",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "RESET-CART"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario errorUser muestra error especial",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.193Z",
+      "endTime": 1756774561197,
+      "tags": {
+        "US": "3",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-EPIC"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario y contraseña incorrectos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:56:01.201Z",
+      "endTime": 1756774561206,
+      "tags": {
+        "US": "1",
+        "SP": "1",
+        "Severity": "4",
+        "testcase": "LOGIN-FAIL"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Usuario performanceUser muestra loading",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.220Z",
+      "endTime": 1756774561224,
+      "tags": {
+        "US": "4",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "LOGIN-LOAD"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Campos vacíos",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\negativeLogin.spec.ts",
+      "outcome": "failed",
+      "duration": 3,
+      "startTime": "2025-09-02T00:56:01.236Z",
+      "endTime": 1756774561239,
+      "tags": {
+        "US": "2",
+        "SP": "1",
+        "Severity": "3",
+        "testcase": "LOGIN-EMPTY"
+      },
+      "runName": "Retest 2"
+    },
+    {
+      "title": "Logout limpia usuario y carrito",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\resetAndLogout.spec.ts",
+      "outcome": "failed",
+      "duration": 4,
+      "startTime": "2025-09-02T00:56:01.237Z",
+      "endTime": 1756774561241,
+      "tags": {
+        "US": "52",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "LOGOUT-CART"
+      },
+      "runName": "Retest 2"
     }
   ]
 }

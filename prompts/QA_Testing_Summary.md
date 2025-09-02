@@ -86,4 +86,9 @@ En el panel derecho, haz clic derecho en SQL Server (MSSQLSERVER) y selecciona R
 npm install --save-dev typescript
 npx tsc insert_script_result.ts
 
-npx playwright test --reporter=json
+
+# Ejecutar con run name específico
+$env:PW_RUN_NAME="QA_Sprint_Sept_2025"; npx playwright test --reporter=./custom-json-reporter.ts
+
+# Insertar resultados en base de datos
+node insert_playwright_results.ts
