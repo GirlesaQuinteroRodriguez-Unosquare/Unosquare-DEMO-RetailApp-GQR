@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/GirlesaQuinteroRodriguez-Unosquare/Unosquare-DEMO-RetailApp#readme",
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "^1.55.0",
     "@types/node": "^24.2.0",
     "typescript": "^5.9.2"
   },

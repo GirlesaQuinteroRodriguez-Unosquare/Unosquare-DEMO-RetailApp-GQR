@@ -1,17 +1,32 @@
-// Define el tipo para los tests
+// -------------------------------------------------------------
+// Script para insertar resultados de pruebas Playwright en MySQL
+// -------------------------------------------------------------
+// Lee el archivo test-results.json generado por Playwright,
+// recorre todas las suites/specs/tests (incluso anidadas),
+// y guarda los resultados en la tabla ScriptDetails.
+//
+// Estructura esperada de test-results.json:
+// {
+//   suites: [
+//     { title, suites: [...], specs: [ { file, tests: [ { title, results: [ { status, duration, startTime, endTime } ] } ] } ] }
+//   ]
+// }
+
+// Tipo para los tests individuales
 interface PlaywrightTestResult {
-  title: string;
-  outcome: string;
-  duration: number;
-  startTime: string | number | Date;
-  endTime: string | number | Date;
-  file: string;
+  title: string; // Nombre del test case
+  outcome: string; // Estado: 'expected', 'unexpected', etc.
+  duration: number; // Duración en ms
+  startTime: string | number | Date; // Timestamp de inicio
+  endTime: string | number | Date;   // Timestamp de fin
+  file: string; // Archivo spec al que pertenece
 }
 
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
 
+// Configuración de conexión a MySQL
 const config = {
   host: 'localhost',
   user: 'retailapp_user',
@@ -20,29 +35,34 @@ const config = {
   port: 3306
 };
 
-// Ruta por defecto del JSON de Playwright
-const resultsPath = path.join(__dirname, 'test-results.json');
+// Ruta del JSON generado por el custom reporter
+const resultsPath = path.join(__dirname, 'test-results-with-tags.json');
 
 
-async function insertResult(test: PlaywrightTestResult, connection: any) {
-  const suiteTitle = (test as any)._suiteTitle || '';
-  const pageObject = (test as any)._pageObject || '';
-
+// Inserta un resultado individual en la base de datos ScriptDetailsWithTags
+async function insertResult(test: any, connection: any) {
+  // Mapea los campos para la tabla ScriptDetailsWithTags
   const ScriptName = test.title;
-  const Category = suiteTitle;
-  const TestSuite = pageObject;
+  const Category = '';
+  const TestSuite = '';
   const ExecutionTime = test.duration ? test.duration / 1000 : null;
   const StartTime = test.startTime ? new Date(test.startTime) : new Date();
   const EndTime = test.endTime ? new Date(test.endTime) : new Date();
   const Status = test.outcome ? capitalizeStatus(test.outcome) : '';
   const ExecutionTarget = test.file || '';
+  const US = test.tags?.US || null;
+  const SP = test.tags?.SP || null;
+  const Severity = test.tags?.Severity || null;
+  const testcase = test.tags?.testcase || null;
+  const RunName = test.runName || '';
 
   // Log para depuración
-  console.log({ ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget });
+  console.log({ ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget, US, SP, Severity, testcase, RunName });
 
-  const sqlInsert = `INSERT INTO ScriptDetails 
-    (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+  // Inserta el registro en la base de datos
+  const sqlInsert = `INSERT INTO ScriptDetailsWithTags 
+    (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget, US, SP, Severity, testcase, RunName)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   await connection.execute(sqlInsert, [
     ScriptName,
     Category,
@@ -51,60 +71,36 @@ async function insertResult(test: PlaywrightTestResult, connection: any) {
     StartTime,
     EndTime,
     Status,
-    ExecutionTarget
+    ExecutionTarget,
+    US,
+    SP,
+    Severity,
+    testcase,
+    RunName
   ]);
 }
 
-function capitalizeStatus(status) {
+// Convierte el status de Playwright a formato legible para la base de datos
+function capitalizeStatus(status: string): string {
   if (!status) return '';
   if (status === 'expected') return 'Passed';
   if (status === 'unexpected') return 'Failed';
   return status.charAt(0).toUpperCase() + status.slice(1);
 }
 
+// Función principal: lee el JSON, extrae los tests y los inserta en la base de datos
 async function main() {
   if (!fs.existsSync(resultsPath)) {
     console.error('No se encontró el archivo de resultados:', resultsPath);
     return;
   }
   const data = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
-  // Playwright JSON reporter: data.suites[].specs[].tests[]
-  const tests: PlaywrightTestResult[] = [];
-  function collectSpecs(suite, parentTitle = '') {
-    if (suite.specs) {
-      for (const spec of suite.specs) {
-        let pageObject = '';
-        if (spec.file) {
-          const match = spec.file.match(/pageObjects[\\\/]([\w-]+)\./i);
-          if (match) pageObject = match[1];
-        }
-        for (const test of spec.tests) {
-          const t: PlaywrightTestResult = {
-            title: test.title || '',
-            outcome: test.results[0]?.status,
-            duration: test.results[0]?.duration,
-            startTime: test.results[0]?.startTime,
-            endTime: test.results[0]?.endTime,
-            file: spec.file
-          };
-          (t as any)._suiteTitle = parentTitle;
-          (t as any)._pageObject = pageObject;
-          tests.push(t);
-        }
-      }
-    }
-    if (suite.suites) {
-      for (const child of suite.suites) {
-        collectSpecs(child, child.title || parentTitle);
-      }
-    }
-  }
-  if (data.suites) {
-    for (const suite of data.suites) {
-      collectSpecs(suite, suite.title || '');
-    }
-  }
+
+  // El custom reporter genera un array plano: { tests: [ ... ] }
+  const tests = data.tests || [];
   console.log('Cantidad de tests encontrados:', tests.length);
+
+  // Inserta todos los tests en la base de datos
   let connection;
   try {
     connection = await mysql.createConnection(config);

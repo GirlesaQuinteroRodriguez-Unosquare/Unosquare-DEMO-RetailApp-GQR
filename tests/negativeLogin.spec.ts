@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { LoginPage } from './pageObjects/LoginPage';
 
 // Casos negativos y límites para login
@@ -9,7 +10,13 @@ test.describe('Login Negativo', () => {
   // @US:1
   // @SP:1
   // @PageObject:LoginPage
-  test('Usuario y contraseña incorrectos', async ({ page }) => {
+  test('Usuario y contraseña incorrectos', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '1' },
+      { type: 'SP', description: '1' },
+      { type: 'Severity', description: '4' },
+      { type: 'testcase', description: 'LOGIN-FAIL' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('usuario_invalido', 'clave_invalida');
@@ -22,7 +29,13 @@ test.describe('Login Negativo', () => {
   // @US:2
   // @SP:1
   // @PageObject:LoginPage
-  test('Campos vacíos', async ({ page }) => {
+  test('Campos vacíos', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '2' },
+      { type: 'SP', description: '1' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'LOGIN-EMPTY' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('', '');
@@ -34,7 +47,13 @@ test.describe('Login Negativo', () => {
   // @US:3
   // @SP:2
   // @PageObject:LoginPage
-  test('Usuario errorUser muestra error especial', async ({ page }) => {
+  test('Usuario errorUser muestra error especial', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '3' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '2' },
+      { type: 'testcase', description: 'LOGIN-EPIC' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('unosquare_errorUser', 'secret_uno');
@@ -47,7 +66,13 @@ test.describe('Login Negativo', () => {
   // @US:4
   // @SP:2
   // @PageObject:LoginPage
-  test('Usuario performanceUser muestra loading', async ({ page }) => {
+  test('Usuario performanceUser muestra loading', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '4' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '2' },
+      { type: 'testcase', description: 'LOGIN-LOAD' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('unosquare_performanceUser', 'secret_uno');

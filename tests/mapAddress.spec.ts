@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { LoginPage } from './pageObjects/LoginPage';
 import { InventoryPage } from './pageObjects/InventoryPage';
 import { CartPage } from './pageObjects/CartPage';
@@ -23,7 +24,13 @@ test.describe('Selección de dirección en el mapa', () => {
   // @US:61
   // @SP:2
   // @PageObject:CheckoutPage
-  test('No selecciona coordenadas si no se hace click en el mapa', async ({ page }) => {
+  test('No selecciona coordenadas si no se hace click en el mapa', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '61' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '2' },
+      { type: 'testcase', description: 'MAP-NO-CLICK' }
+    );
     // No interactúa con el mapa
     await expect(page.locator('#selected-coordinates')).toBeHidden();
   });
@@ -33,7 +40,13 @@ test.describe('Selección de dirección en el mapa', () => {
   // @US:62
   // @SP:2
   // @PageObject:CheckoutPage
-  test('Selecciona coordenadas al hacer click en el mapa', async ({ page }) => {
+  test('Selecciona coordenadas al hacer click en el mapa', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '62' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '2' },
+      { type: 'testcase', description: 'MAP-CLICK' }
+    );
     // Espera a que el mapa esté visible
     await expect(page.locator('#address-map')).toBeVisible();
     // Simula click en el centro del mapa

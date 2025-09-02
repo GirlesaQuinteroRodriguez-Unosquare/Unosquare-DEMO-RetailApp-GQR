@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { LoginPage } from './pageObjects/LoginPage';
 import { InventoryPage } from './pageObjects/InventoryPage';
 import { CartPage } from './pageObjects/CartPage';
@@ -11,7 +12,13 @@ test.describe('Reset App y Logout', () => {
   // @US:51
   // @SP:2
   // @PageObject:CartPage
-  test('Reset App limpia el carrito y regresa a inventario', async ({ page }) => {
+  test('Reset App limpia el carrito y regresa a inventario', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '51' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'RESET-CART' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('unosquare_validUser', 'secret_uno');
@@ -34,7 +41,13 @@ test.describe('Reset App y Logout', () => {
   // @US:52
   // @SP:2
   // @PageObject:CartPage
-  test('Logout limpia usuario y carrito', async ({ page }) => {
+  test('Logout limpia usuario y carrito', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '52' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'LOGOUT-CART' }
+    );
     const login = new LoginPage(page);
     await login.goto('http://localhost:5500');
     await login.login('unosquare_validUser', 'secret_uno');

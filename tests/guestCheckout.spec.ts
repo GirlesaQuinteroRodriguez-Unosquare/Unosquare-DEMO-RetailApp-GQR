@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { LoginPage } from './pageObjects/LoginPage';
 import { InventoryPage } from './pageObjects/InventoryPage';
 import { CartPage } from './pageObjects/CartPage';
@@ -23,7 +24,13 @@ test.describe('Guest Checkout', () => {
   // @US:41
   // @SP:2
   // @PageObject:CheckoutPage
-  test('No permite continuar con email inválido', async ({ page }) => {
+  test('No permite continuar con email inválido', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '41' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'GUEST-EMAIL-INVALID' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       email: 'correo_invalido',
@@ -48,7 +55,13 @@ test.describe('Guest Checkout', () => {
   // @US:42
   // @SP:2
   // @PageObject:CheckoutPage
-  test('Permite continuar con email válido', async ({ page }) => {
+  test('Permite continuar con email válido', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '42' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '2' },
+      { type: 'testcase', description: 'GUEST-EMAIL-VALID' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       email: 'guest@correo.com',

@@ -1,0 +1,184 @@
+{
+  "tests": [
+    {
+      "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 7,
+      "startTime": "2025-09-02T00:46:36.812Z",
+      "endTime": 1756773996819,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:46:36.837Z",
+      "endTime": 1756773996842,
+      "tags": {
+        "US": "12",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-EMPTY"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Persistencia del carrito tras recargar la página",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:46:36.847Z",
+      "endTime": 1756773996853,
+      "tags": {
+        "US": "15",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "CART-PERSIST"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Agregar y eliminar productos, cantidad mínima y máxima",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:46:36.862Z",
+      "endTime": 1756773996867,
+      "tags": {
+        "US": "14",
+        "SP": "3",
+        "Severity": "2",
+        "testcase": "CART-ADD-REMOVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:46:36.863Z",
+      "endTime": 1756773996869,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Persistencia del carrito tras recargar la página",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:46:36.870Z",
+      "endTime": 1756773996875,
+      "tags": {
+        "US": "15",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "CART-PERSIST"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:46:36.871Z",
+      "endTime": 1756773996877,
+      "tags": {
+        "US": "12",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-EMPTY"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "No permite checkout con total negativo",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:46:36.881Z",
+      "endTime": 1756773996887,
+      "tags": {
+        "US": "13",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-NEGATIVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "No permite checkout con carrito vacío",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 5,
+      "startTime": "2025-09-02T00:46:36.882Z",
+      "endTime": 1756773996887,
+      "tags": {
+        "US": "12",
+        "SP": "2",
+        "Severity": "3",
+        "testcase": "CART-EMPTY"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Agregar y eliminar productos, cantidad mínima y máxima",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 7,
+      "startTime": "2025-09-02T00:46:36.925Z",
+      "endTime": 1756773996932,
+      "tags": {
+        "US": "14",
+        "SP": "3",
+        "Severity": "2",
+        "testcase": "CART-ADD-REMOVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Agregar y eliminar productos, cantidad mínima y máxima",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 6,
+      "startTime": "2025-09-02T00:46:36.917Z",
+      "endTime": 1756773996923,
+      "tags": {
+        "US": "14",
+        "SP": "3",
+        "Severity": "2",
+        "testcase": "CART-ADD-REMOVE"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    },
+    {
+      "title": "Persistencia del carrito tras recargar la página",
+      "file": "C:\\Users\\girlesa.quintero\\Unosquare\\Unosquare-DEMO-RetailApp\\tests\\cartEdgeCases.spec.ts",
+      "outcome": "failed",
+      "duration": 2,
+      "startTime": "2025-09-02T00:46:37.508Z",
+      "endTime": 1756773997510,
+      "tags": {
+        "US": "15",
+        "SP": "2",
+        "Severity": "2",
+        "testcase": "CART-PERSIST"
+      },
+      "runName": "QA_Sprint_Sept_2025"
+    }
+  ]
+}

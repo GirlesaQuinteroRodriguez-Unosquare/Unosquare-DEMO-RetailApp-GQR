@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { LoginPage } from './pageObjects/LoginPage';
 import { InventoryPage } from './pageObjects/InventoryPage';
 import { CartPage } from './pageObjects/CartPage';
@@ -24,7 +25,13 @@ test.describe('Validaciones de Checkout', () => {
   // @US:21
   // @SP:2
   // @PageObject:CheckoutPage
-  test('Zip code inválido', async ({ page }) => {
+  test('Zip code inválido', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '21' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '4' },
+      { type: 'testcase', description: 'CHK-ZIP' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       firstName: 'Test',
@@ -48,7 +55,13 @@ test.describe('Validaciones de Checkout', () => {
   // @US:22
   // @SP:2
   // @PageObject:CheckoutPage
-  test('Card number inválido', async ({ page }) => {
+  test('Card number inválido', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '22' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '4' },
+      { type: 'testcase', description: 'CHK-CARD' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       firstName: 'Test',
@@ -72,7 +85,13 @@ test.describe('Validaciones de Checkout', () => {
   // @US:23
   // @SP:2
   // @PageObject:CheckoutPage
-  test('Expiry date inválida', async ({ page }) => {
+  test('Expiry date inválida', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '23' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'CHK-EXP' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       firstName: 'Test',
@@ -96,7 +115,13 @@ test.describe('Validaciones de Checkout', () => {
   // @US:24
   // @SP:2
   // @PageObject:CheckoutPage
-  test('CVV inválido', async ({ page }) => {
+  test('CVV inválido', async ({ page }, testInfo) => {
+    testInfo.annotations.push(
+      { type: 'US', description: '24' },
+      { type: 'SP', description: '2' },
+      { type: 'Severity', description: '3' },
+      { type: 'testcase', description: 'CHK-CVV' }
+    );
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutForm({
       firstName: 'Test',

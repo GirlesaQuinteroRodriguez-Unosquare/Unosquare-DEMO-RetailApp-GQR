@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -66,15 +66,15 @@ function insertResult(test, connection) {
                     console.log({ ScriptName: ScriptName, Category: Category, TestSuite: TestSuite, ExecutionTime: ExecutionTime, StartTime: StartTime, EndTime: EndTime, Status: Status, ExecutionTarget: ExecutionTarget });
                     sqlInsert = "INSERT INTO ScriptDetails \n    (ScriptName, Category, TestSuite, ExecutionTime, StartTime, EndTime, Status, ExecutionTarget)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     return [4 /*yield*/, connection.execute(sqlInsert, [
-                            ScriptName,
-                            Category,
-                            TestSuite,
-                            ExecutionTime,
-                            StartTime,
-                            EndTime,
-                            Status,
-                            ExecutionTarget
-                        ])];
+                        ScriptName,
+                        Category,
+                        TestSuite,
+                        ExecutionTime,
+                        StartTime,
+                        EndTime,
+                        Status,
+                        ExecutionTarget
+                    ])];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
